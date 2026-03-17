@@ -1,4 +1,4 @@
-# Knowledge Test System
+# EazyQuizz
 
 ## Descriere
 Aplicație **Console in C#** pentru evaluarea cunoștințelor dintr-un domeniu specific (Geografie, Biologie, Istorie, Matematică).
@@ -11,7 +11,7 @@ Aplicație **Console in C#** pentru evaluarea cunoștințelor dintr-un domeniu s
 
 ## Structură Proiect
 ```
-KnowledgeTestSystem/
+EazyQuizz/
 ├── Models/
 │   ├── Quiz.cs
 │   ├── Question.cs
