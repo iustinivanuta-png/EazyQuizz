@@ -1,13 +1,13 @@
 using System;
-using KnowledgeTestSystem.Models;
+using EazyQuizz.Models;
 
-namespace KnowledgeTestSystem
+namespace EazyQuizz
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=== Sistem de Test de Evaluare a Cunoștințelor ===\n");
+            Console.WriteLine("=== EazyQuizz ===\n");
             Console.WriteLine("Selectează domeniu:");
             Console.WriteLine("1. Geografie");
             Console.WriteLine("2. Biologie");
