@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace KnowledgeTestSystem.Models
+namespace EazyQuizz.Models
 {
     public class QuizResult
     {
