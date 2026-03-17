@@ -1,6 +1,6 @@
 using System;
 
-namespace KnowledgeTestSystem.Models
+namespace EazyQuizz.Models
 {
     public class Answer
     {
