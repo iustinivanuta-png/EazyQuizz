@@ -1,6 +1,8 @@
-﻿namespace EazyQuizz
+﻿using System.Collections.Generic;
+
+namespace EazyQuizz
 {
-    enum Domain
+    public enum Domain
     {
         Geografie,
         Istorie,
@@ -8,18 +10,28 @@
         Biologie
     }
 
-    enum Difficulty
+    public enum Difficulty
     {
         Usoara,
         Medie,
         Grea
     }
 
-    class Question
+    [System.Flags]
+    public enum QuestionType
     {
-        public string text;
-        public Domain domain;
-        public Difficulty difficulty;
-        public Answer[] answers;
+        Text = 1,
+        Imagine = 2,
+        RaspunsMultiplu = 4
+    }
+
+    public class Question
+    {
+        public string text { get; set; }
+        public string imagePath { get; set; }
+        public Domain domain { get; set; }
+        public Difficulty difficulty { get; set; }
+        public QuestionType type { get; set; }
+        public List<Answer> answers { get; set; } = new List<Answer>();
     }
 }

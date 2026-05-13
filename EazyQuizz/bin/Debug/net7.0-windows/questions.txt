@@ -1,0 +1,2 @@
+Capitala Frantei?|Geografie|Usoara|Text, RaspunsMultiplu||Madrid;False|Paris;True|Roma;False|Berlin;False
+Cine a fost Alexandru Ioan Cuza?|Istorie|Medie|Text, RaspunsMultiplu||Poet;False|Domnitor;True|Medic;False|Profesor;False

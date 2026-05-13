@@ -1,8 +1,8 @@
 ﻿namespace EazyQuizz
 {
-    class Answer
+    public class Answer
     {
-        public string text;
-        public bool correct;
+        public string text { get; set; }
+        public bool correct { get; set; }
     }
 }

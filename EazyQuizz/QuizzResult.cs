@@ -1,15 +1,14 @@
-﻿using System;
-
-namespace EazyQuizz
+﻿namespace EazyQuizz
 {
-    class QuizResult
+    public class QuizResult
     {
-        public int score;
-        public int total;
+        public string studentName { get; set; }
+        public int score { get; set; }
+        public int total { get; set; }
 
-        public void Show()
+        public override string ToString()
         {
-            Console.WriteLine("Scor final: " + score + " din " + total);
+            return studentName + " - Scor: " + score + "/" + total;
         }
     }
 }
