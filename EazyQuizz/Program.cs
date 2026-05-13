@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EazyQuizz
 {
     class Program
     {
+        static List<Question> questions = QuestionManager.GetDefaultQuestions();
+
         static void Main(string[] args)
         {
+        
             while (true)
             {
                 Console.Clear();
@@ -14,7 +18,12 @@ namespace EazyQuizz
                 Console.WriteLine("2. Student existent");
                 Console.WriteLine("3. Conectare + Start Quiz");
                 Console.WriteLine("4. Afisare scoruri");
-                Console.WriteLine("5. Iesire");
+                Console.WriteLine("5. Afisare intrebari");
+                Console.WriteLine("6. Cautare intrebari dupa domeniu");
+                Console.WriteLine("7. Adaugare intrebare");
+                Console.WriteLine("8. Stergere intrebare");
+                Console.WriteLine("9. Salvare intrebari in fisier");
+                Console.WriteLine("10. Iesire");
 
                 Console.Write("\nAlege optiune: ");
                 string c = Console.ReadLine();
@@ -58,6 +67,31 @@ namespace EazyQuizz
                 }
                 else if (c == "5")
                 {
+                    QuestionManager.ShowQuestions(questions);
+                    Pause();
+                }
+                else if (c == "6")
+                {
+                    QuestionManager.SearchByDomain(questions);
+                    Pause();
+                }
+                else if (c == "7")
+                {
+                    QuestionManager.AddQuestion(questions);
+                    Pause();
+                }
+                else if (c == "8")
+                {
+                    QuestionManager.DeleteQuestion(questions);
+                    Pause();
+                }
+                else if (c == "9")
+                {
+                    QuestionManager.SaveQuestions(questions);
+                    Pause();
+                }
+                else if (c == "10")
+                {
                     Console.WriteLine("La revedere!");
                     break;
                 }
@@ -73,42 +107,10 @@ namespace EazyQuizz
         {
             Quiz quiz = new Quiz();
 
-            Question q1 = new Question();
-            q1.text = "Capitala Frantei?";
-            q1.domain = "Geografie";
-            q1.answers = new Answer[]
+            foreach (Question q in questions)
             {
-                new Answer { text = "Madrid", correct = false },
-                new Answer { text = "Paris", correct = true },
-                new Answer { text = "Roma", correct = false },
-                new Answer { text = "Berlin", correct = false }
-            };
-
-            Question q2 = new Question();
-            q2.text = "Cate continente exista?";
-            q2.domain = "Geografie";
-            q2.answers = new Answer[]
-            {
-                new Answer { text = "5", correct = false },
-                new Answer { text = "6", correct = false },
-                new Answer { text = "7", correct = true },
-                new Answer { text = "8", correct = false }
-            };
-
-            Question q3 = new Question();
-            q3.text = "Cine a fost Alexandru Ioan Cuza?";
-            q3.domain = "Istorie";
-            q3.answers = new Answer[]
-            {
-                new Answer { text = "Poet", correct = false },
-                new Answer { text = "Domnitor", correct = true },
-                new Answer { text = "Medic", correct = false },
-                new Answer { text = "Profesor", correct = false }
-            };
-
-            quiz.questions.Add(q1);
-            quiz.questions.Add(q2);
-            quiz.questions.Add(q3);
+                quiz.questions.Add(q);
+            }
 
             quiz.Start(nume);
         }

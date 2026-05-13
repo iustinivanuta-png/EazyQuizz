@@ -1,119 +1,54 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 
 namespace EazyQuizz
 {
-    class Student
+    class Quiz
     {
-        static string filePath = "students.txt";
-        static string scorePath = "scores.txt";
+        public List<Question> questions = new List<Question>();
 
-        public static bool Register()
+        public void Start(string studentName)
         {
-            Console.Write("Nume: ");
-            string nume = Console.ReadLine();
+            int scor = 0;
 
-            Console.Write("Parola: ");
-            string parola = Console.ReadLine();
-
-            if (File.Exists(filePath))
+            foreach (var q in questions)
             {
-                string[] lines = File.ReadAllLines(filePath);
+                Console.Clear();
+                Console.WriteLine("Student: " + studentName);
+                Console.WriteLine("Domeniu: " + q.domain);
+                Console.WriteLine("Dificultate: " + q.difficulty);
+                Console.WriteLine("\n" + q.text);
 
-                foreach (string line in lines)
+                for (int i = 0; i < q.answers.Length; i++)
                 {
-                    if (line.StartsWith(nume + "_"))
-                    {
-                        Console.WriteLine("Studentul exista deja!");
-                        return false;
-                    }
+                    Console.WriteLine((i + 1) + ". " + q.answers[i].text);
                 }
-            }
 
-            using (StreamWriter sw = new StreamWriter(filePath, true))
-            {
-                sw.WriteLine(nume + "_" + parola);
-            }
+                Console.Write("Raspuns: ");
+                int r = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Inregistrare reusita!");
-            return true;
-        }
-
-        public static string Login()
-        {
-            Console.Write("Nume: ");
-            string nume = Console.ReadLine();
-
-            Console.Write("Parola: ");
-            string parola = Console.ReadLine();
-
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("Nu exista studenti.");
-                return null;
-            }
-
-            string[] lines = File.ReadAllLines(filePath);
-
-            foreach (string line in lines)
-            {
-                if (line == nume + "_" + parola)
+                if (r >= 1 && r <= q.answers.Length && q.answers[r - 1].correct)
                 {
-                    Console.WriteLine("Autentificare reusita!");
-                    return nume;
+                    Console.WriteLine("Corect!");
+                    scor++;
                 }
-            }
-
-            Console.WriteLine("Date gresite.");
-            return null;
-        }
-
-        public static string LoginAfterRegister()
-        {
-            string[] lines = File.ReadAllLines(filePath);
-            string last = lines[lines.Length - 1];
-            return last.Split('_')[0];
-        }
-
-        public static void ShowLoginOnly()
-        {
-            string nume = Login();
-
-            if (nume != null)
-            {
-                Console.WriteLine("Bine ai venit, " + nume);
-            }
-        }
-
-        public static void SaveScore(string nume, int scor, int total)
-        {
-            using (StreamWriter sw = new StreamWriter(scorePath, true))
-            {
-                sw.WriteLine(nume + "_" + scor + "_" + total);
-            }
-        }
-
-        public static void ShowScores()
-        {
-            Console.WriteLine("=== Scoruri ===\n");
-
-            if (!File.Exists(scorePath))
-            {
-                Console.WriteLine("Nu exista scoruri.");
-                return;
-            }
-
-            string[] lines = File.ReadAllLines(scorePath);
-
-            foreach (string line in lines)
-            {
-                string[] p = line.Split('_');
-
-                if (p.Length == 3)
+                else
                 {
-                    Console.WriteLine("Student: " + p[0] + " | Scor: " + p[1] + "/" + p[2]);
+                    Console.WriteLine("Gresit!");
                 }
+
+                Console.ReadKey();
             }
+
+            QuizResult result = new QuizResult();
+            result.score = scor;
+            result.total = questions.Count;
+
+            Console.Clear();
+            Console.WriteLine("Quiz terminat!");
+            result.Show();
+
+            Student.SaveScore(studentName, scor, questions.Count);
         }
     }
-}s
+}

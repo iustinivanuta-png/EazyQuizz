@@ -12,3 +12,4 @@ C:\Users\Detox\source\repos\EazyQuizz\EazyQuizz\obj\Debug\net7.0\refint\EazyQuiz
 C:\Users\Detox\source\repos\EazyQuizz\EazyQuizz\obj\Debug\net7.0\EazyQuizz.pdb
 C:\Users\Detox\source\repos\EazyQuizz\EazyQuizz\obj\Debug\net7.0\EazyQuizz.genruntimeconfig.cache
 C:\Users\Detox\source\repos\EazyQuizz\EazyQuizz\obj\Debug\net7.0\ref\EazyQuizz.dll
+C:\Users\Detox\source\repos\EazyQuizz\EazyQuizz\obj\Debug\net7.0\EazyQuizz.sourcelink.json
